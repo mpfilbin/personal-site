@@ -8,6 +8,9 @@ const config: Config = {
   title: 'Mike Filbin',
   tagline: '...TODO: Come up with a tagline...',
   favicon: 'img/favicon.ico',
+  plugins: [
+    'docusaurus-plugin-sass'
+  ],
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -23,7 +26,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'mpfilbin', // Usually your GitHub org/user name.
-  projectName: 'site', // Usually your repo name.
+  projectName: 'personal-site', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -41,10 +44,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -52,17 +51,12 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './src/css/custom.scss',
         },
       } satisfies Preset.Options,
     ],
@@ -72,24 +66,23 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: 'light',
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
     },
     navbar: {
       title: 'Mike Filbin',
+      style: 'dark',
       logo: {
         alt: 'Mike Filbin Headshot',
         src: 'img/headshots/headshot_transparent.png',
       },
       items: [
+
+        {to: '/about', label: 'About Me', position: 'left'},
+        {to: '/resume', label: 'Resume', position: 'left'},
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/mpfilbin',
           label: 'GitHub',
           position: 'right',
         },
@@ -119,14 +112,14 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/mpfilbin',
-            },
+            // {
+            //   label: 'Blog',
+            //   to: '/blog',
+            // },
+            // {
+            //   label: 'GitHub',
+            //   href: 'https://github.com/mpfilbin',
+            // },
           ],
         },
       ],

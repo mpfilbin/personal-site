@@ -17,13 +17,6 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
       </div>
     </header>
   );
@@ -37,6 +30,13 @@ export default function Home(): ReactNode {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
+        <div className="container">
+          <div className="row">
+            <div className="alert alert--warning margin-top--md col col--6 col--offset-3" role="alert">
+              <strong>⚠️Note:</strong> This site is currently under construction.
+            </div>
+          </div>
+        </div>
         <HomepageFeatures />
       </main>
     </Layout>
