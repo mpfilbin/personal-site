@@ -1,28 +1,63 @@
 import React from 'react';
 import styles from './styles.module.css';
+import LanguageIcon from '@site/src/components/LanguageIcon';
 
 export type LicenseType = 'MIT' | 'GPL' | 'Unlicensed' | string;
+export type ProjectType = 'project' | 'experiment' | string;
 
 interface ProjectCardProps {
   name: string;
   repoUrl: string; // full GitHub repo url e.g. https://github.com/owner/repo
   description: string;
   license?: LicenseType;
+  type?: ProjectType;
+  language?: string; // devicon language key, e.g. typescript, go, csharp, python
 }
 
-export default function ProjectCard({name, repoUrl, description, license}: ProjectCardProps) {
+export default function ProjectCard({name, repoUrl, description, license, type = 'project', language}: ProjectCardProps) {
   const forkUrl = repoUrl.endsWith('/') ? `${repoUrl}fork` : `${repoUrl}/fork`;
+
+  // Map some language names to devicon keys if necessary
+  const deviconKey = (lang?: string) => {
+    if (!lang) return null;
+    const map: Record<string, string> = {
+      typescript: 'typescript-plain',
+      javascript: 'javascript-plain',
+      python: 'python-plain',
+      go: 'go-original-wordmark',
+      rust: 'rust-original',
+      csharp: 'csharp-plain',
+      'c#': 'csharp-plain',
+      java: 'java-plain',
+    };
+    const key = map[lang.toLowerCase()] || lang.toLowerCase();
+    return key;
+  };
+
+  const iconKey = deviconKey(language);
 
   return (
     <article className={`${styles.card} card`} aria-labelledby={`project-${name.replace(/\s+/g,'-')}`}>
       <div className={styles.cardBody}>
-        {/* Header: project name (left) + license badge (right) */}
+        {/* Header: project type badge (left), project name (left), license badge (right) */}
         <div className={styles.headerRow}>
-          <h3 id={`project-${name.replace(/\s+/g,'-')}`} className={styles.title}>
-            <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="link">
-              {name}
-            </a>
-          </h3>
+          <div className={styles.headerLeft}>
+            {type && (
+              <span className={`${styles.typeBadge} ${type === 'experiment' ? styles.badgeExperiment : styles.badgeProject}`}>
+                {type}
+              </span>
+            )}
+
+            {iconKey && (
+              <LanguageIcon name={iconKey} size={"16pt"} />
+            )}
+
+            <h3 id={`project-${name.replace(/\s+/g,'-')}`} className={styles.title}>
+              <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="link">
+                {name}
+              </a>
+            </h3>
+          </div>
 
           <div className={styles.license} aria-hidden={false}>
             <span className={`badge ${license === 'MIT' ? 'badge--success' : license === 'GPL' ? 'badge--warning' : 'badge--secondary'}`}>

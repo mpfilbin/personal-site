@@ -4,6 +4,11 @@
  * work well for content-centric websites.
  */
 
+/* To use a locally installed devicon package, you can uncomment the following line */
+/* and ensure `devicon` is installed in node_modules. Some build environments */
+/* (like this one) may not have node_modules available. */
+// @import '~devicon/devicon.min.css';
+
 :root {
     --color-1: #252329;
     --color-2: #acc08c;
