@@ -1,0 +1,39 @@
+[
+  {
+    "name": "awesome-lib",
+    "repoUrl": "https://github.com/your-username/awesome-lib",
+    "description": "A small, dependency-free library that simplifies X by providing a tiny, focused API.",
+    "license": "MIT"
+  },
+  {
+    "name": "cli-tool",
+    "repoUrl": "https://github.com/your-username/cli-tool",
+    "description": "Command-line utility for batch processing images with sensible defaults and fast performance.",
+    "license": "GPL"
+  },
+  {
+    "name": "experimental-sandbox",
+    "repoUrl": "https://github.com/your-username/experimental-sandbox",
+    "description": "An experimental playground for trying new web APIs and WASM integrations.",
+    "license": "Unlicensed"
+  },
+  {
+    "name": "docusaurus-theme",
+    "repoUrl": "https://github.com/your-username/docusaurus-theme",
+    "description": "A small Docusaurus theme extension with helpful layout patterns and accessible components.",
+    "license": "MIT"
+  },
+  {
+    "name": "data-utils",
+    "repoUrl": "https://github.com/your-username/data-utils",
+    "description": "Utility functions for common data transformations used in analytics and ETL pipelines.",
+    "license": "MIT"
+  },
+  {
+    "name": "viz-playground",
+    "repoUrl": "https://github.com/your-username/viz-playground",
+    "description": "Interactive visualization examples demonstrating performance techniques.",
+    "license": "MIT"
+  }
+]
+

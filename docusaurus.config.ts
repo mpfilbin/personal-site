@@ -81,6 +81,7 @@ const config: Config = {
 
         {to: '/about', label: 'About Me', position: 'left'},
         {to: '/resume', label: 'Resume', position: 'left'},
+        {to: '/projects', label: 'Projects', position: 'left'},
         {
           href: 'https://github.com/mpfilbin',
           label: 'GitHub',
