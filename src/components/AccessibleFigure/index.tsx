@@ -21,6 +21,7 @@ export default function AccessibleFigure({
   const [open, setOpen] = useState(false);
   const prevActiveRef = useRef<HTMLElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const captionIdRef = useRef(`af-caption-${Math.random().toString(36).slice(2)}`);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -48,9 +49,9 @@ export default function AccessibleFigure({
   }, [open]);
 
   return (
-    <figure className={`${styles.figure} ${className}`}>
+    <figure className={`${styles.figure} ${className}`.trim()}>
       <button
-        className={styles.imageButton}
+        className={`${styles.imageButton} button button--link`}
         aria-label={`Open image: ${alt}`}
         onClick={() => setOpen(true)}
       >
@@ -63,20 +64,24 @@ export default function AccessibleFigure({
           className={styles.img}
         />
       </button>
-      {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
+      {caption && (
+        <figcaption id={captionIdRef.current} className={styles.caption}>
+          {caption}
+        </figcaption>
+      )}
 
       {open && (
         <div
           className={styles.overlay}
           role="dialog"
           aria-modal="true"
-          aria-label={caption || alt}
+          aria-describedby={caption ? captionIdRef.current : undefined}
           onClick={() => setOpen(false)}
         >
           <div className={styles.dialog} onClick={(e) => e.stopPropagation()}>
             <button
               ref={closeButtonRef}
-              className={styles.close}
+              className={`${styles.close} button button--secondary button--sm`}
               aria-label="Close image"
               onClick={() => setOpen(false)}
             >
@@ -90,4 +95,3 @@ export default function AccessibleFigure({
     </figure>
   );
 }
-

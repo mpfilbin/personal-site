@@ -34,26 +34,35 @@
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* About page layout: image left, text right */
+/* About page layout: updated for Infima grid */
 .about-layout {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
   margin: 2rem 0;
 }
 
-.about-image {
-  flex: 0 0 320px;
-  max-width: 40%;
-  min-width: 200px;
+/* Increase gutter for clearer separation */
+.about-layout .row {
+  margin-left: -1rem; /* wider gutter */
+  margin-right: -1rem;
 }
 
+.about-layout .row > .col {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.about-image {
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+/* Scale image back slightly to 380px */
 .about-image img {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 8px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  max-width: 380px; /* slightly smaller */
 }
 
 .about-image figcaption {
@@ -63,8 +72,8 @@
 }
 
 .about-content {
-  flex: 1 1 auto;
-  min-width: 0; /* allow content to shrink on small screens */
+  /* ensure content can grow/shrink within the grid column */
+  min-width: 0;
 }
 
 /* Skip-to-content link for keyboard users */
@@ -117,9 +126,17 @@
     gap: 1rem;
   }
 
-  .about-image {
+  .about-layout .row {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .about-layout .row > .col {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .about-image img {
     max-width: 100%;
-    flex: 0 0 auto;
-    min-width: 0;
   }
 }

@@ -93,12 +93,7 @@ const config: Config = {
       links: [
         {
           title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
+          items: [],
         },
         {
           title: 'Social',
@@ -111,16 +106,7 @@ const config: Config = {
         },
         {
           title: 'More',
-          items: [
-            // {
-            //   label: 'Blog',
-            //   to: '/blog',
-            // },
-            // {
-            //   label: 'GitHub',
-            //   href: 'https://github.com/mpfilbin',
-            // },
-          ],
+          items: [],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Michael Filbin. All Rights Reserved.`,
