@@ -4,111 +4,31 @@
  * work well for content-centric websites.
  */
 
-/* To use a locally installed devicon package, you can uncomment the following line */
-/* and ensure `devicon` is installed in node_modules. Some build environments */
-/* (like this one) may not have node_modules available. */
-// @import '~devicon/devicon.min.css';
+@use '../pages/about/styles.scss';
 
 :root {
-    --color-1: #252329;
-    --color-2: #acc08c;
-    --color-3: #d24652;
-    --color-4: #015fb2;
-    --color-5: #cb7d52;
 
-    --ifm-color-primary: #015fb2;
-    --ifm-color-primary-dark: #0156a0;
-    --ifm-color-primary-darker: #015197;
-    --ifm-color-primary-darkest: #01437d;
-    --ifm-color-primary-light: #0169c4;
-    --ifm-color-primary-lighter: #016dcd;
-    --ifm-color-primary-lightest: #017ce7;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-    --ifm-code-font-size: 95%;
+  --ifm-color-primary: #015fb2;
+  --ifm-color-primary-dark: #0156a0;
+  --ifm-color-primary-darker: #015197;
+  --ifm-color-primary-darkest: #01437d;
+  --ifm-color-primary-light: #0169c4;
+  --ifm-color-primary-lighter: #016dcd;
+  --ifm-color-primary-lightest: #017ce7;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-code-font-size: 95%;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-    --ifm-color-primary: #acc08c;
-    --ifm-color-primary-dark: #9db477;
-    --ifm-color-primary-darker: #95ae6c;
-    --ifm-color-primary-darkest: #7c9652;
-    --ifm-color-primary-light: #bbcca1;
-    --ifm-color-primary-lighter: #c3d2ac;
-    --ifm-color-primary-lightest: #dae3cc;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
-
-/* About page layout: updated for Infima grid */
-.about-layout {
-  margin: 2rem 0;
-}
-
-/* Increase gutter for clearer separation */
-.about-layout .row {
-  margin-left: -1rem; /* wider gutter */
-  margin-right: -1rem;
-}
-
-.about-layout .row > .col {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.about-image {
-  max-width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-/* Scale image back slightly to 380px */
-.about-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  max-width: 380px; /* slightly smaller */
-}
-
-.about-image figcaption {
-  font-size: 0.9rem;
-  color: rgba(0, 0, 0, 0.6);
-  margin-top: 0.5rem;
-}
-
-.about-content {
-  /* ensure content can grow/shrink within the grid column */
-  min-width: 0;
-}
-
-/* Skip-to-content link for keyboard users */
-.skip-to-content {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.skip-to-content:focus,
-.sr-only:focus {
-  position: static;
-  left: 0.5rem;
-  top: 0.5rem;
-  width: auto;
-  height: auto;
-  padding: 0.5rem 0.75rem;
-  background: var(--ifm-color-primary);
-  color: white;
-  border-radius: 4px;
-  z-index: 1000;
-}
-
-/* keyboard focus outline for the figure (image) */
-.about-image:focus {
-  outline: 3px solid var(--ifm-color-primary);
-  outline-offset: 3px;
+  --ifm-color-primary: #acc08c;
+  --ifm-color-primary-dark: #9db477;
+  --ifm-color-primary-darker: #95ae6c;
+  --ifm-color-primary-darkest: #7c9652;
+  --ifm-color-primary-light: #bbcca1;
+  --ifm-color-primary-lighter: #c3d2ac;
+  --ifm-color-primary-lightest: #dae3cc;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
 /* Visually-hidden utility */
@@ -122,26 +42,17 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
 
-/* Responsive: stack columns on smaller viewports */
-@media (max-width: 720px) {
-  .about-layout {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .about-layout .row {
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-
-  .about-layout .row > .col {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .about-image img {
-    max-width: 100%;
+  :focus {
+    position: static;
+    left: 0.5rem;
+    top: 0.5rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 0.75rem;
+    background: var(--ifm-color-primary);
+    color: white;
+    border-radius: 4px;
+    z-index: 1000;
   }
 }

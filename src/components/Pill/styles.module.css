@@ -1,66 +1,63 @@
-.pill {
-  display: inline-block;
-  padding: 0.125rem 0.6rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: capitalize;
+:root{
+  --pill-radius: 9999px;
+}
+
+.pill{
   border: 1px solid transparent;
+  border-radius: var(--pill-radius);
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
   line-height: 1;
-  vertical-align: middle;
-  transition: background-color 120ms ease, box-shadow 120ms ease, color 120ms ease;
+  padding: .125rem .6rem;
+  text-transform: capitalize;
+  transition: background-color .12s, box-shadow .12s, color .12s;
 }
 
-/* Visible focus for keyboard users */
-.pill:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.12); /* subtle blue ring */
+.pill:focus{
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+  outline: 0;
 }
 
-.pill:hover {
-  filter: brightness(0.98);
-}
-
-/* Variant styles */
-.pill_experiment {
-  background: rgba(220, 38, 38, 0.08);
-  color: #b91c1c; /* red-700 */
-  border-color: rgba(220,38,38,0.12);
-}
-
-.pill_project {
-  background: rgba(34, 197, 94, 0.08);
-  color: #15803d; /* green-600 */
+/* Variants */
+.pill_project{
+  background: rgba(34,197,94,0.08);
   border-color: rgba(34,197,94,0.12);
+  color: #15803d;
 }
 
-.pill_success {
+.pill_experiment{
+  background: rgba(220,38,38,0.08);
+  border-color: rgba(220,38,38,0.12);
+  color: #b91c1c;
+}
+
+.pill_success{
   background: rgba(16,185,129,0.08);
-  color: #065f46; /* green-800 */
   border-color: rgba(16,185,129,0.12);
+  color: #065f46;
 }
 
-.pill_warning {
+.pill_warning{
   background: rgba(250,204,21,0.08);
-  color: #92400e; /* amber-800 */
   border-color: rgba(250,204,21,0.12);
+  color: #92400e;
 }
 
-.pill_secondary {
-  background: rgba(55,65,81,0.04);
-  color: #374151; /* gray-700 */
-  border-color: rgba(55,65,81,0.06);
+.pill_secondary{
+  background: rgba(55,65,81,0.06);
+  border-color: rgba(55,65,81,0.07);
+  color: #374151;
 }
 
-.pill_neutral {
-  background: rgba(15,23,42,0.02);
-  color: #0f172a; /* slate-900 */
+.pill_neutral{
+  background: rgba(15,23,42,0.03);
   border-color: rgba(15,23,42,0.04);
+  color: #0f172a;
 }
 
-/* Optional small size utility — used by other components if needed */
-.pill_small {
-  padding: 0.0625rem 0.4rem;
-  font-size: 0.6875rem;
+.pill_small{
+  font-size: .6875rem;
+  padding: .0625rem .4rem;
 }
 
