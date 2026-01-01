@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
-import LanguageIcon from '@site/src/components/LanguageIcon';
+import DevIcon from '@site/src/components/DevIcon';
 import Pill from '@site/src/components/Pill';
 
 export type LicenseType = 'MIT' | 'GPL' | 'Unlicensed' | string;
@@ -52,7 +52,7 @@ export default function ProjectCard({name, repoUrl, description, license, type =
         <div className={styles.headerRow}>
           <div className={styles.headerLeft}>
             {iconKey && (
-              <LanguageIcon name={iconKey} size={"16pt"} />
+              <DevIcon name={iconKey} size={"16pt"} />
             )}
 
             <h3 id={`project-${name.replace(/\s+/g,'-')}`} className={styles.title}>
@@ -62,7 +62,7 @@ export default function ProjectCard({name, repoUrl, description, license, type =
             </h3>
           </div>
 
-npm          {/* keep headerRight area minimal; license badge moved to actions row */}
+          {/* keep headerRight area minimal; license badge moved to actions row */}
         </div>
 
         <p className={styles.description}>{description}</p>
