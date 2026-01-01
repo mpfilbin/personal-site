@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 import LanguageIcon from '@site/src/components/LanguageIcon';
+import Pill from '@site/src/components/Pill';
 
 export type LicenseType = 'MIT' | 'GPL' | 'Unlicensed' | string;
 export type ProjectType = 'project' | 'experiment' | string;
@@ -30,24 +31,26 @@ export default function ProjectCard({name, repoUrl, description, license, type =
       'c#': 'csharp-plain',
       java: 'java-plain',
     };
-    const key = map[lang.toLowerCase()] || lang.toLowerCase();
-    return key;
+    return map[lang.toLowerCase()] || lang.toLowerCase();
   };
 
   const iconKey = deviconKey(language);
 
+  // Helpers to map values to Pill variants
+  const typeVariant = (t?: ProjectType) => (t === 'experiment' ? 'experiment' : 'project');
+  const licenseVariant = (l?: LicenseType) => {
+    if (!l) return 'secondary';
+    if (l === 'MIT') return 'success';
+    if (l === 'GPL') return 'warning';
+    return 'secondary';
+  };
+
   return (
     <article className={`${styles.card} card`} aria-labelledby={`project-${name.replace(/\s+/g,'-')}`}>
       <div className={styles.cardBody}>
-        {/* Header: project type badge (left), project name (left), license badge (right) */}
+        {/* Header: language icon (left) and project name */}
         <div className={styles.headerRow}>
           <div className={styles.headerLeft}>
-            {type && (
-              <span className={`${styles.typeBadge} ${type === 'experiment' ? styles.badgeExperiment : styles.badgeProject}`}>
-                {type}
-              </span>
-            )}
-
             {iconKey && (
               <LanguageIcon name={iconKey} size={"16pt"} />
             )}
@@ -59,11 +62,7 @@ export default function ProjectCard({name, repoUrl, description, license, type =
             </h3>
           </div>
 
-          <div className={styles.license} aria-hidden={false}>
-            <span className={`badge ${license === 'MIT' ? 'badge--success' : license === 'GPL' ? 'badge--warning' : 'badge--secondary'}`}>
-              {license ?? 'Unlicensed'}
-            </span>
-          </div>
+          {/* keep headerRight area minimal; license badge moved to bottom */}
         </div>
 
         <p className={styles.description}>{description}</p>
@@ -90,6 +89,19 @@ export default function ProjectCard({name, repoUrl, description, license, type =
 
             <span>Fork</span>
           </a>
+        </div>
+
+        {/* Pills row placed beneath the actions (so pills appear under the Fork button) */}
+        <div className={styles.pillsRow}>
+          {type && (
+            <Pill variant={typeVariant(type)}>
+              {type}
+            </Pill>
+          )}
+
+          <Pill variant={licenseVariant(license)}>
+            {license ?? 'Unlicensed'}
+          </Pill>
         </div>
       </div>
     </article>

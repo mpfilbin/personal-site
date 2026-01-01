@@ -1,16 +1,16 @@
 /* ProjectCard styles */
 .card {
   padding: 1rem;
-  border-radius: var(--ifm-global-radius, 8px);
+  border-radius: 8px; /* fallback for --ifm-global-radius */
   transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms;
-  border: 1px solid var(--ifm-color-emphasis-200, #e5e7eb); /* thin but visible border */
-  background: var(--ifm-background-surface-color, #fff);
+  border: 1px solid #e5e7eb; /* fallback for --ifm-color-emphasis-200 */
+  background: #fff; /* fallback for --ifm-background-surface-color */
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--ifm-global-shadow-md, 0 6px 18px rgba(0,0,0,0.12));
-  border-color: var(--ifm-color-primary-lightest, #f0f9ff);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12); /* fallback for --ifm-global-shadow-md */
+  border-color: #f0f9ff; /* fallback for --ifm-color-primary-lightest */
 }
 
 .cardBody {
@@ -70,12 +70,20 @@
 .description {
   margin: 0;
   /* Use the site's default text color (Infima emphasis 900) so descriptions match other body text */
-  color: var(--ifm-color-emphasis-900, #111827);
+  color: #111827; /* fallback for --ifm-color-emphasis-900 */
 }
 
 .actionsRow {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.pillsRow {
+  display: flex;
+  justify-content: flex-end; /* align pills to the right under the Fork button */
+  gap: 0.5rem;
+  margin-top: 0.5rem;
   align-items: center;
 }
 

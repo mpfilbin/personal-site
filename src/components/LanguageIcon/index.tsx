@@ -27,9 +27,7 @@ const LanguageIcon = (props: DevIconProps) => {
     }
 
     return (
-        <div>
             <i className={`${format}`} style={style}></i>
-        </div>
     );
 }
 
