@@ -1,0 +1,65 @@
+.about-layout {
+  margin: 2rem 0;
+
+  .row {
+    margin-left: -1rem; /* wider gutter */
+    margin-right: -1rem;
+  }
+
+  .row > .col {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+}
+
+.about-image {
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    max-width: 380px; /* slightly smaller */
+  }
+
+  figcaption {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 0.5rem;
+  }
+
+  :focus {
+    outline: 3px solid var(--ifm-color-primary);
+    outline-offset: 3px;
+  }
+}
+
+.about-content {
+  /* ensure content can grow/shrink within the grid column */
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .about-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-layout .row {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .about-layout .row > .col {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .about-image img {
+    max-width: 100%;
+  }
+}

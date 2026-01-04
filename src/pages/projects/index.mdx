@@ -1,0 +1,20 @@
+import {ProjectCatalog} from "../../components/ProjectCatalog/ProjectCatalog";
+import projects from '@site/src/data/projects.json';
+
+# Projects
+
+Welcome — this page catalogs my open-source and programming projects. Below you'll find a short note about the purpose of these projects and how they are licensed, followed by cards for each project. Each card links to the project's GitHub repository, shows a short description and license badge, and includes a quick "Fork" button to start your own copy of the repo.
+
+## Purpose & Licensing
+
+I publish small libraries, command-line tools, demos, and learning experiments. Most projects are intended to be reusable and permissively licensed (MIT) so others can adopt and contribute; some experiments may carry more restrictive licenses (GPL) or be intentionally unlicensed.
+
+Please respect the license displayed on each project's card when reusing or contributing. If you plan to redistribute or build upon a project, consult its LICENSE file in the repository.
+
+---
+
+## Project Catalog
+
+The cards below are rendered from `src/data/projects.json`. Edit that file to add, remove, or update entries. The page will render cards in rows with two columns each.
+
+<ProjectCatalog projects={projects} />

@@ -1,0 +1,96 @@
+name: Deploy to Azure Static Web Apps (SWA CLI)
+
+on:
+  push:
+    branches:
+      - preview
+      - master
+  pull_request:
+    types: [closed]
+
+jobs:
+  deploy-preview:
+    name: Build & Deploy (preview)
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/preview') ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'preview')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install SWA CLI
+        run: npm install -g @azure/static-web-apps-cli@latest
+
+      - name: Deploy to preview using SWA CLI
+        env:
+          DEPLOY_ENV: preview
+          WEB_APP_NAME: ${{ secrets.WEB_APP_NAME }}
+          RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          echo "Deploying to preview environment: $DEPLOY_ENV"
+          swa deploy ./build \
+            --app-name "$WEB_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --subscription-id "$AZURE_SUBSCRIPTION_ID" \
+            --env "$DEPLOY_ENV"
+
+  deploy-production:
+    name: Build & Deploy (production)
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install SWA CLI
+        run: npm install -g @azure/static-web-apps-cli@latest
+
+      - name: Deploy to production using SWA CLI
+        env:
+          DEPLOY_ENV: production
+          WEB_APP_NAME: ${{ secrets.WEB_APP_NAME }}
+          RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          echo "Deploying to production environment: $DEPLOY_ENV"
+          swa deploy ./build \
+            --app-name "$WEB_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --subscription-id "$AZURE_SUBSCRIPTION_ID" \
+            --env "$DEPLOY_ENV"

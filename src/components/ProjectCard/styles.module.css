@@ -1,0 +1,115 @@
+/* ProjectCard styles */
+.card {
+  padding: 1rem;
+  border-radius: 8px; /* fallback for --ifm-global-radius */
+  transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms;
+  border: 1px solid #e5e7eb; /* fallback for --ifm-color-emphasis-200 */
+  background: #fff; /* fallback for --ifm-background-surface-color */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12); /* fallback for --ifm-global-shadow-md */
+  border-color: #f0f9ff; /* fallback for --ifm-color-primary-lightest */
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.125rem;
+  flex: 1 1 auto;
+  min-width: 0; /* allow truncation */
+}
+
+.license {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  margin: 0;
+  /* Use the site's default text color (Infima emphasis 900) so descriptions match other body text */
+  color: #111827; /* fallback for --ifm-color-emphasis-900 */
+}
+
+.actionsRow {
+  display: flex;
+  justify-content: space-between; /* place pills on the left and actions on the right */
+  align-items: center;
+  gap: 1rem;
+}
+
+.pillsRow {
+  display: flex;
+  justify-content: flex-start; /* left-aligned under the Fork button */
+  gap: 0.5rem;
+  margin-top: 0; /* remove offset so pills align exactly with the button */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.button .icon {
+  margin-right: 0.5rem;
+}
+
+.actions .button {
+  display: inline-flex;
+  align-items: center;
+}
+
+
+@media (max-width: 720px) {
+  .metaRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .actionsRow {
+    flex-direction: column-reverse; /* stack: Fork button above pills (or reverse to keep UX) */
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .pillsRow {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+
+  .actions {
+    justify-content: flex-end;
+  }
+}

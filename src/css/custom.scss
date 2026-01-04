@@ -4,32 +4,74 @@
  * work well for content-centric websites.
  */
 
-:root {
-    --color-1: #252329;
-    --color-2: #acc08c;
-    --color-3: #d24652;
-    --color-4: #015fb2;
-    --color-5: #cb7d52;
+@use '../pages/about/styles.scss';
 
-    --ifm-color-primary: #015fb2;
-    --ifm-color-primary-dark: #0156a0;
-    --ifm-color-primary-darker: #015197;
-    --ifm-color-primary-darkest: #01437d;
-    --ifm-color-primary-light: #0169c4;
-    --ifm-color-primary-lighter: #016dcd;
-    --ifm-color-primary-lightest: #017ce7;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-    --ifm-code-font-size: 95%;
+/* Leaflet CSS for maps */
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+
+  --ifm-color-primary: #015fb2;
+  --ifm-color-primary-dark: #0156a0;
+  --ifm-color-primary-darker: #015197;
+  --ifm-color-primary-darkest: #01437d;
+  --ifm-color-primary-light: #0169c4;
+  --ifm-color-primary-lighter: #016dcd;
+  --ifm-color-primary-lightest: #017ce7;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-code-font-size: 95%;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-    --ifm-color-primary: #acc08c;
-    --ifm-color-primary-dark: #9db477;
-    --ifm-color-primary-darker: #95ae6c;
-    --ifm-color-primary-darkest: #7c9652;
-    --ifm-color-primary-light: #bbcca1;
-    --ifm-color-primary-lighter: #c3d2ac;
-    --ifm-color-primary-lightest: #dae3cc;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #acc08c;
+  --ifm-color-primary-dark: #9db477;
+  --ifm-color-primary-darker: #95ae6c;
+  --ifm-color-primary-darkest: #7c9652;
+  --ifm-color-primary-light: #bbcca1;
+  --ifm-color-primary-lighter: #c3d2ac;
+  --ifm-color-primary-lightest: #dae3cc;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Visually-hidden utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+
+  :focus {
+    position: static;
+    left: 0.5rem;
+    top: 0.5rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 0.75rem;
+    background: var(--ifm-color-primary);
+    color: white;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+}
+
+/* RouteMap component styling */
+.route-map-container {
+  width: 100%;
+  max-width: 100%;
+  margin: var(--ifm-spacing-vertical) 0;
+
+  .leaflet-container {
+    width: 100% !important;
+    height: 500px !important;
+    max-width: 100%;
+    border-radius: var(--ifm-global-radius);
+    box-shadow: var(--ifm-global-shadow-md);
+  }
+}
+
