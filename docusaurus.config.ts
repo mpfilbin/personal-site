@@ -86,8 +86,40 @@ const config: Config = {
           position: 'left', // or 'right'
           items: [
             {
-              label: 'Golen Leaf Half Marathon',
+              label: 'Golden Leaf Half Marathon',
               to: '/running/routes/golden-leaf',
+            },
+            {
+              label: 'Chatfield Inner Loop',
+              to: '/running/routes/chatfield',
+            },
+            {
+              label: 'Buffalo Loop (Conifer)',
+              to: '/running/routes/buffalo-loop',
+            },
+            {
+              label: 'Flying J Ranch (Evergreen)',
+              to: '/running/routes/flying-j',
+            },
+            {
+              label: 'Elk Meadows Inner Loop (Evergreen)',
+              to: '/running/routes/elk-meadows-inner',
+            },
+            {
+              label: 'Elk Meadows Outer Loop (Evergreen)',
+              to: '/running/routes/elk-meadows-outer',
+            },
+            {
+              label: 'Mount Falcon (Morrison)',
+              to: '/running/routes/mount-falcon',
+            },
+            {
+              label: 'Green Mountain (Golden)',
+              to: '/running/routes/green-mountain',
+            },
+          {
+              label: 'Fehringer Ranch Open Space (Littleton)',
+              to: '/running/routes/fehringer-ranch',
             }
           ]
         },

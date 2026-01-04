@@ -1,68 +1,129 @@
-import React, {type FC, useEffect, useState} from 'react';
+import {type FC, useEffect, useState} from 'react';
+import {MapContainer, TileLayer, Polyline} from 'react-leaflet';
+import gpxParser from 'gpx-parser-builder';
 
-interface ClientMapPropersties {
+type LatLng = [number, number];
+
+interface GpxTrackPoint {
+  $: {
+    lat: string;
+    lon: string;
+  };
+}
+
+interface ClientMapProperties {
   routeURL: string;
   height: string;
   width: string;
-  center: [number, number];
+  center: LatLng;
   zoom?: number;
 }
 
-const ClientMap: FC<ClientMapPropersties> = ({routeURL, height, width, center, zoom = 16}) => {
-  const [coords, setCoords] = useState<Array<[number, number]> | []>([]);
-  const [LeafletComponents, setLeafletComponents] = useState<any>(null);
+type LoadingState = 'idle' | 'loading' | 'success' | 'error';
+
+const ClientMap: FC<ClientMapProperties> = ({
+  routeURL,
+  height,
+  width,
+  center,
+  zoom = 16
+}) => {
+  const [coords, setCoords] = useState<LatLng[]>([]);
+  const [loadingState, setLoadingState] = useState<LoadingState>('loading');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let mounted = true;
+    const abortController = new AbortController();
 
-    (async () => {
+    const loadGpxData = async () => {
       try {
-        const [{MapContainer, TileLayer, Polyline}, GpxModule] = await Promise.all([
-          // dynamic import of react-leaflet
-          import('react-leaflet') as Promise<any>,
-          // dynamic import of gpxparser
-          import('gpx-parser-builder') as Promise<any>,
-        ]);
+        setLoadingState('loading');
+        setError(null);
 
-        if (!mounted) return;
+        const response = await fetch(routeURL, {signal: abortController.signal});
 
-        setLeafletComponents({MapContainer, TileLayer, Polyline});
+        if (!response.ok) {
+          throw new Error(`Failed to fetch GPX: ${response.status} ${response.statusText}`);
+        }
 
-        // fetch and parse GPX
-        const res = await fetch(routeURL);
-        const gpxText = await res.text();
-        if (!mounted) return;
+        const gpxText = await response.text();
 
-        const GpxParser = (GpxModule as any).default ?? GpxModule;
-        const gpx = GpxParser.parse(gpxText);
-        const coordinates = gpx.trk[0].trkseg[0].trkpt.map(p => [p.$.lat, p.$.lon]);
+        if (abortController.signal.aborted) return;
+
+        const gpx = gpxParser.parse(gpxText);
+
+        if (!gpx?.trk?.[0]?.trkseg?.[0]?.trkpt) {
+          throw new Error('Invalid GPX data structure');
+        }
+
+        const coordinates: LatLng[] = gpx.trk[0].trkseg[0].trkpt.map(
+          (point: GpxTrackPoint) => [
+            parseFloat(point.$.lat),
+            parseFloat(point.$.lon)
+          ]
+        );
+
+        if (abortController.signal.aborted) return;
+
         setCoords(coordinates);
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.error('ClientMap load error', e);
+        setLoadingState('success');
+      } catch (err) {
+        if (abortController.signal.aborted) return;
+
+        const errorMessage = err instanceof Error ? err.message : 'Failed to load map data';
+        setError(errorMessage);
+        setLoadingState('error');
       }
-    })();
+    };
+
+    loadGpxData();
 
     return () => {
-      mounted = false;
+      abortController.abort();
     };
   }, [routeURL]);
 
-  if (!LeafletComponents) {
-    return <div style={{height, width}}/>;
+  if (loadingState === 'loading') {
+    return (
+      <div
+        style={{height, width, display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+        role="status"
+        aria-live="polite"
+      >
+        Loading route data...
+      </div>
+    );
   }
 
-  const {MapContainer, TileLayer, Polyline} = LeafletComponents;
+  if (loadingState === 'error') {
+    return (
+      <div
+        style={{height, width, display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+        role="alert"
+      >
+        <p>Error loading route: {error}</p>
+      </div>
+    );
+  }
 
-  console.log(center);
+
   return (
     <div className="route-map-container" style={{height, width}}>
-      <MapContainer style={{height: '100%', width: '100%'}} zoom={zoom} center={center} scrollWheelZoom={false}>
+      <MapContainer
+        style={{height: '100%', width: '100%'}}
+        zoom={zoom}
+        center={center}
+        scrollWheelZoom={false}
+      >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Polyline pathOptions={{fillColor: 'red', color: 'blue'}} positions={coords}/>
+        {coords.length > 0 && (
+          <Polyline
+            pathOptions={{fillColor: 'red', color: 'blue'}}
+            positions={coords}
+          />
+        )}
       </MapContainer>
     </div>
   );
