@@ -127,6 +127,8 @@ You are a world-class expert in React 19.2 with deep knowledge of modern hooks, 
 
 ## Code Examples
 
+!IMPORTANT! - When generating source code, ALWAYS keep comments to a minimum.
+
 ### Using the `use()` Hook (React 19)
 
 ```typescript

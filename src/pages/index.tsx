@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import {Alert} from "@site/src/components/Alert";
 
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
@@ -11,8 +12,10 @@ export default function Home(): ReactNode {
       <main>
         <div className="container">
           <div className="row">
-            <div className="alert alert--warning margin-top--md col col--6 col--offset-3" role="alert">
-              <strong>⚠️Note:</strong> This site is currently under construction.
+            <div className="col col--6 col--offset-3 margin-top--md">
+              <Alert type='warning'>
+                <strong>⚠️Note:</strong> This site is currently under construction.
+              </Alert>
             </div>
           </div>
         </div>

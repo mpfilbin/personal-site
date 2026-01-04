@@ -82,6 +82,16 @@ const config: Config = {
         {to: '/resume', label: 'Resume', position: 'left'},
         {to: '/projects', label: 'Projects', position: 'left'},
         {
+          label: 'Runs',
+          position: 'left', // or 'right'
+          items: [
+            {
+              label: 'Golen Leaf Half Marathon',
+              to: '/running/routes/golden-leaf',
+            }
+          ]
+        },
+        {
           href: 'https://github.com/mpfilbin',
           label: 'GitHub',
           position: 'right',

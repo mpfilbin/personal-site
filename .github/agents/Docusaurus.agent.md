@@ -240,6 +240,8 @@ You are a world-class expert in Docusaurus v3 and the Infima CSS framework with 
 
 ## Code Examples
 
+!IMPORTANT! - When generating source code, ALWAYS keep comments to a minimum. 
+
 ### Basic docusaurus.config.ts
 
 ```typescript
@@ -952,7 +954,7 @@ Infima provides a complete set of CSS components and utilities for building docu
   <div className="col col--6 margin-bottom--md">
     <div className="card">
       <div className="card__header">
-        <h3>Card Title</h3>
+        <h3>Index Title</h3>
       </div>
       <div className="card__body">
         <p>
@@ -975,7 +977,7 @@ Infima provides a complete set of CSS components and utilities for building docu
         />
       </div>
       <div className="card__body">
-        <h4>Card with Image</h4>
+        <h4>Index with Image</h4>
         <small>
           Cards can include images, making them perfect for visual content.
         </small>

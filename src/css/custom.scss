@@ -6,6 +6,9 @@
 
 @use '../pages/about/styles.scss';
 
+/* Leaflet CSS for maps */
+@import 'leaflet/dist/leaflet.css';
+
 :root {
 
   --ifm-color-primary: #015fb2;
@@ -56,3 +59,19 @@
     z-index: 1000;
   }
 }
+
+/* RouteMap component styling */
+.route-map-container {
+  width: 100%;
+  max-width: 100%;
+  margin: var(--ifm-spacing-vertical) 0;
+
+  .leaflet-container {
+    width: 100% !important;
+    height: 500px !important;
+    max-width: 100%;
+    border-radius: var(--ifm-global-radius);
+    box-shadow: var(--ifm-global-shadow-md);
+  }
+}
+
