@@ -110,7 +110,7 @@ const ClientMap: FC<ClientMapProperties> = ({
   return (
     <div className="route-map-container" style={{height, width}}>
       <MapContainer
-        style={{height: '100%', width: '100%'}}
+        style={{height: '100%', width: '100%', zIndex: 0}}
         zoom={zoom}
         center={center}
         scrollWheelZoom={false}
