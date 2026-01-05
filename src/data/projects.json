@@ -39,7 +39,7 @@
     "type": "experiment",
     "language": "shell"
   },
-{
+  {
     "name": "go-password-hasher",
     "repoUrl": "https://github.com/mpfilbin/go-password-hasher",
     "description": "Provides an HTTP API for the encoding and persistence of passwords. go-password-hasher's HTTP interface is available over port 8080.",
