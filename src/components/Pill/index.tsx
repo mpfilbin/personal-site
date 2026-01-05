@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 
 export type PillVariant =
-    | 'project'
     | 'error'
     | 'success'
     | 'warning'
