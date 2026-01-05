@@ -1,50 +1,57 @@
 [
   {
-    "name": "awesome-lib",
-    "repoUrl": "https://github.com/your-username/awesome-lib",
-    "description": "A small, dependency-free library that simplifies X by providing a tiny, focused API.",
-    "license": "MIT",
-    "type": "project",
-    "language": "typescript"
-  },
-  {
-    "name": "cli-tool",
-    "repoUrl": "https://github.com/your-username/cli-tool",
-    "description": "Command-line utility for batch processing images with sensible defaults and fast performance.",
-    "license": "GPL",
-    "type": "project",
-    "language": "go"
-  },
-  {
-    "name": "experimental-sandbox",
-    "repoUrl": "https://github.com/your-username/experimental-sandbox",
-    "description": "An experimental playground for trying new web APIs and WASM integrations.",
-    "license": "Unlicensed",
-    "type": "experiment",
-    "language": "javascript"
-  },
-  {
-    "name": "docusaurus-theme",
-    "repoUrl": "https://github.com/your-username/docusaurus-theme",
-    "description": "A small Docusaurus theme extension with helpful layout patterns and accessible components.",
-    "license": "MIT",
-    "type": "project",
-    "language": "typescript"
-  },
-  {
-    "name": "data-utils",
-    "repoUrl": "https://github.com/your-username/data-utils",
-    "description": "Utility functions for common data transformations used in analytics and ETL pipelines.",
+    "name": "Obsidian Vault Manager",
+    "repoUrl": "https://github.com/mpfilbin/obsidian-vault-manager",
+    "description": "A standalone CLI tool for managing Obsidian vaults with comprehensive features for tags, images, properties, and indexing.",
     "license": "MIT",
     "type": "project",
     "language": "python"
   },
   {
-    "name": "viz-playground",
-    "repoUrl": "https://github.com/your-username/viz-playground",
-    "description": "Interactive visualization examples demonstrating performance techniques.",
+    "name": "git-mcp",
+    "repoUrl": "https://github.com/mpfilbin/git-mcp",
+    "description": "A Model Context Protocol (MCP) server that exposes Git operations as tools for use with GitHub Copilot in VS Code or IntelliJ IDEA.",
     "license": "MIT",
+    "type": "project",
+    "language": "typescript"
+  },
+  {
+    "name": "functional-koa",
+    "repoUrl": "https://github.com/mpfilbin/functional-koa",
+    "description": "Experiments on writing a web server using Koa and functional programming techniques.",
+    "license": "Unlicensed",
     "type": "experiment",
-    "language": "rust"
+    "language": "typescript"
+  },
+  {
+    "name": "json-resume-editor",
+    "repoUrl": "https://github.com/mpfilbin/json-resume-editor",
+    "description": "A prototype, browser-based editor for JSON Resume documents with real-time preview capabilities.",
+    "license": "MIT",
+    "type": "project",
+    "language": "typescript"
+  },
+  {
+    "name": "system-setup",
+    "repoUrl": "https://github.com/mpfilbin/system-setup",
+    "description": "Ansible provisioning scripts for setting up a new Arch Linux machine.",
+    "license": "unlicensed",
+    "type": "experiment",
+    "language": "shell"
+  },
+{
+    "name": "go-password-hasher",
+    "repoUrl": "https://github.com/mpfilbin/go-password-hasher",
+    "description": "Provides an HTTP API for the encoding and persistence of passwords. go-password-hasher's HTTP interface is available over port 8080.",
+    "license": "unlicensed",
+    "type": "experiment",
+    "language": "go"
+  },
+  {
+    "name": "AmbientWeatherRubySDK",
+    "repoUrl": "https://github.com/mpfilbin/AmbientWeatherRubySDK",
+    "description": "A Ruby SDK for Interacting with the Ambient Weather API",
+    "type": "experiment",
+    "language": "ruby"
   }
 ]

@@ -37,6 +37,8 @@ export default function ProjectCard({
             csharp: 'csharp-plain',
             'c#': 'csharp-plain',
             java: 'java-plain',
+            shell: 'bash-plain',
+            ruby: 'ruby-plain',
         };
         return map[lang.toLowerCase()] || lang.toLowerCase();
     };
