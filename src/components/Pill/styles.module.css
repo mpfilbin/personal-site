@@ -20,13 +20,8 @@
 }
 
 /* Variants */
-.pill_project{
-  background: rgba(34,197,94,0.08);
-  border-color: rgba(34,197,94,0.12);
-  color: #15803d;
-}
 
-.pill_experiment{
+.pill_error{
   background: rgba(220,38,38,0.08);
   border-color: rgba(220,38,38,0.12);
   color: #b91c1c;

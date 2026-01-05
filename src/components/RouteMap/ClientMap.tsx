@@ -110,13 +110,14 @@ const ClientMap: FC<ClientMapProperties> = ({
   return (
     <div className="route-map-container" style={{height, width}}>
       <MapContainer
-        style={{height: '100%', width: '100%'}}
+        style={{height: '100%', width: '100%', zIndex: 0}}
         zoom={zoom}
         center={center}
         scrollWheelZoom={false}
       >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         {coords.length > 0 && (

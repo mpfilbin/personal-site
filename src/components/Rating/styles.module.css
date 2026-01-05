@@ -1,0 +1,40 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.starWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.starEmpty {
+  color: var(--ifm-color-emphasis-300);
+}
+
+.starFillContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.starFilled {
+  color: var(--ifm-color-warning);
+}
+
+.ratingValue {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-700);
+}
+
