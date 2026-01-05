@@ -30,13 +30,19 @@ function DevIcon({
         className
     );
 
-    return (
+    return title ? (
+        <span role="img" aria-label={title} title={title}>
+            <i
+                className={iconClassName}
+                style={iconStyle}
+                aria-hidden="true"
+            />
+        </span>
+    ) : (
         <i
             className={iconClassName}
             style={iconStyle}
-            aria-hidden={!title}
-            aria-label={title}
-            title={title}
+            aria-hidden="true"
         />
     );
 }
