@@ -46,7 +46,7 @@ export default function ProjectCard({
     const iconKey = deviconKey(language);
 
     // Helpers to map values to Pill variants
-    const typeVariant = (t?: ProjectType) => (t === 'experiment' ? 'error' : 'success');
+    const typeVariant = (t?: ProjectType) => (t === 'experiment' ? 'info' : 'success');
     const licenseVariant = (l?: LicenseType) => {
         if (!l) return 'secondary';
         if (l === 'MIT') return 'success';
