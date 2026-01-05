@@ -4,7 +4,6 @@ import styles from './styles.module.css';
 
 export type PillVariant =
     | 'project'
-    | 'experiment'
     | 'error'
     | 'success'
     | 'warning'
