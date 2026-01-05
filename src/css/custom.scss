@@ -5,19 +5,17 @@
  */
 
 @use '../pages/about/styles.scss';
-
-/* Leaflet CSS for maps */
 @import 'leaflet/dist/leaflet.css';
 
 :root {
 
-  --ifm-color-primary: #015fb2;
-  --ifm-color-primary-dark: #0156a0;
-  --ifm-color-primary-darker: #015197;
-  --ifm-color-primary-darkest: #01437d;
-  --ifm-color-primary-light: #0169c4;
-  --ifm-color-primary-lighter: #016dcd;
-  --ifm-color-primary-lightest: #017ce7;
+  --ifm-color-primary: #295d7f;
+  --ifm-color-primary-dark: #255472;
+  --ifm-color-primary-darker: #234f6c;
+  --ifm-color-primary-darkest: #1d4159;
+  --ifm-color-primary-light: #2d668c;
+  --ifm-color-primary-lighter: #2f6b92;
+  --ifm-color-primary-lightest: #3579a5;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-code-font-size: 95%;
 }
@@ -75,3 +73,12 @@
   }
 }
 
+nav.navbar--fixed-top.navbar--dark {
+  a:hover, a.navbar__link--active {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: var(--ifm-color-primary-lightest);
+    text-underline-offset: 5px;
+    text-decoration-thickness: 3px
+  }
+}

@@ -1,35 +1,45 @@
-import React from 'react';
+import { CSSProperties } from 'react';
+import clsx from 'clsx';
 import 'devicon';
 
 export interface DevIconProps {
     name: string;
     size?: string;
     colored?: boolean;
-    style?: React.CSSProperties;
+    style?: CSSProperties;
+    className?: string;
+    title?: string;
 }
 
-const DevIcon = (props: DevIconProps) => {
-    // Default style
-    const style: React.CSSProperties = {
-        fontSize: '5rem',
-        ...(props.style || {}),
+function DevIcon({
+    name,
+    size,
+    colored = true,
+    style,
+    className,
+    title,
+}: DevIconProps) {
+    const iconStyle: CSSProperties = {
+        fontSize: size ?? '5rem',
+        ...style,
     };
 
-    // Allow size override
-    if (props.size) {
-        style.fontSize = props.size;
-    }
+    const iconClassName = clsx(
+        `devicon-${name}`,
+        colored && 'colored',
+        className
+    );
 
-    // devicon expects a class like `devicon-typescript-plain` and optionally `colored`
-    let className = `devicon-${props.name}`;
-
-    // Default: add `colored` class unless explicitly disabled
-    if (props.colored !== false) {
-        className += ' colored';
-    }
-
-    return <i className={className} style={style} aria-hidden />;
-};
+    return (
+        <i
+            className={iconClassName}
+            style={iconStyle}
+            aria-hidden={!title}
+            aria-label={title}
+            title={title}
+        />
+    );
+}
 
 export default DevIcon;
 
