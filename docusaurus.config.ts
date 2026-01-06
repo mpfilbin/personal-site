@@ -166,8 +166,8 @@ const config: Config = {
                     title: 'More',
                     items: [
                         {
-                            label: "Knowledge Base",
-                            href: "https://knowledge.filb.in"
+                            label: 'Knowledge Base',
+                            href: 'https://knowledge.filb.in'
                         }
                     ],
                 },
