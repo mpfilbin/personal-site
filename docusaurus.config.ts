@@ -164,7 +164,12 @@ const config: Config = {
                 },
                 {
                     title: 'More',
-                    items: [],
+                    items: [
+                        {
+                            label: "Knowledge Base",
+                            href: "https://knowledge.filb.in"
+                        }
+                    ],
                 },
             ],
             copyright: `Copyright © ${new Date().getFullYear()} Michael Filbin. All Rights Reserved.`,
